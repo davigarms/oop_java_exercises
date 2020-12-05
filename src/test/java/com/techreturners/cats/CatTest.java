@@ -1,71 +1,70 @@
 package com.techreturners.cats;
 
- interface Cat {
-     boolean isAsleep();
-     void goToSleep();
-     void wakeUp();
-     String getSetting();
-     int getAverageHeight();
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+public class CatTest {
+
+    @Test
+    public void checkCatIsAwake() {
+        Cat domesticCat = new DomesticCat();
+        assertFalse("Cat should be awake by default", domesticCat.isAsleep());
+    }
+
+    @Test
+    public void checkCatCanGoToSleep() {
+        Cat domesticCat = new DomesticCat();
+        domesticCat.goToSleep();
+        assertTrue("Cat should be snoozing", domesticCat.isAsleep());
+    }
+
+    @Test
+    public void checkCatCanWakep() {
+        Cat domesticCat = new DomesticCat();
+        domesticCat.goToSleep();
+        domesticCat.wakeUp();
+        assertFalse("Cat should be awake now", domesticCat.isAsleep());
+    }
+
+    @Test
+    public void checkCatSetting() {
+        Cat domesticCat = new DomesticCat();
+        assertEquals("domestic", domesticCat.getSetting());
+    }
+
+    @Test
+    public void checkCatHeight() {
+        Cat domesticCat = new DomesticCat();
+        assertEquals(23, domesticCat.getAverageHeight());
+    }
+
+    @Test
+    public void checkLionHeight() {
+        Cat lionCat = new LionCat();
+        assertEquals(1100, lionCat.getAverageHeight());
+    }
+
+    @Test
+    public void checkCheetahHeight() {
+        Cat cheetahCat = new CheetahCat();
+        assertEquals(900, cheetahCat.getAverageHeight());
+    }
+     @Test
+     public void feedTheLion() {
+         Cat lionCat = new LionCat();
+         assertEquals("Roar!!!!", lionCat.eat());
+     }
+
+     @Test
+     public void feedTheCheetah() {
+         Cat cheetahCat = new CheetahCat();
+         assertEquals("Zzzzzzz", cheetahCat.eat());
+     }
+
+     @Test
+     public void feedTheCat() {
+         Cat domesticCat = new DomesticCat();
+         assertEquals("Purrrrrrr", domesticCat.eat());
+     }
 }
-
- class DomesticCat implements Cat {
-
-    private boolean isAsleep = false;
-    String settings = "domestic";
-    Integer averageHeight = 23;
-
-    public boolean isAsleep(){
-        return isAsleep;
-    }
-
-    public void goToSleep(){
-        isAsleep = true;
-    }
-
-    public void wakeUp(){
-        isAsleep = false;
-    }
-
-    public String getSetting(){
-        return settings;
-    }
-
-    public int getAverageHeight(){
-        return averageHeight;
-    }
-}
-
-abstract class WildCat implements Cat {
-    abstract public int getAverageHeight();
-}
-
-class LionCat extends WildCat {
-
-    int averageHeight = 1100;
-    String settings = "wild";
-    boolean isAsleep = false;
-
-    public boolean isAsleep(){
-        return isAsleep;
-    }
-
-    public int getAverageHeight(){
-        return averageHeight;
-    }
-
-    public String getSetting(){
-        return settings;
-    }
-
-    public void goToSleep(){
-        isAsleep = true;
-    }
-
-    public void wakeUp(){
-        isAsleep = false;
-    }
-}
-
-/*class Cheetah extends WildCat {
-
-}*/
