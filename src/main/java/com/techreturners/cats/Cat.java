@@ -18,18 +18,23 @@ class DomesticCat implements Cat {
     public boolean isAsleep() {
         return isAsleep;
     }
+
     public void goToSleep() {
         isAsleep = true;
     }
+
     public void wakeUp() {
         isAsleep = false;
     }
+
     public String getSetting() {
         return settings;
     }
+
     public int getAverageHeight() {
         return averageHeight;
     }
+
     public String eat() {
         return eatReaction;
     }
