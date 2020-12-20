@@ -1,5 +1,7 @@
 package com.techreturners.cats;
 
+import java.util.Random;
+
 interface Cat {
     String getSetting();
     boolean isAsleep();
@@ -45,6 +47,14 @@ class DomesticCat extends AbstractCat {
         settings = "domestic";
         eatReaction = "Purrrrrrr";
         averageHeight = 23;
+    }
+
+    public String eat() {
+        Random rand = new Random();
+        if (rand.nextFloat() > .5) {
+            eatReaction = "It will do I suppose";
+        }
+        return eatReaction;
     }
 }
 
